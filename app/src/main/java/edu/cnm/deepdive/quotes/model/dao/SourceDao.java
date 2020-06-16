@@ -32,5 +32,4 @@ public interface SourceDao {
   @Query("SELECT * FROM Source ORDER BY name")
   Single<List<Source>> selectAll();
 
-
 }
