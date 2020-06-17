@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.quotes.model.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -33,6 +34,24 @@ public class Source {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  @Override
+  public int hashCode() {
+    return name.toLowerCase().hashCode();
+  }
+
+  @Override
+  public boolean equals(@Nullable Object obj) {
+    return obj == this
+        || (obj instanceof Source
+            && ((Source) obj).name.equalsIgnoreCase(name));
+  }
+
+  @NonNull
+  @Override
+  public String toString() {
+    return name;
   }
 
 }
