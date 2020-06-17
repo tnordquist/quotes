@@ -11,6 +11,14 @@ import edu.cnm.deepdive.quotes.model.dao.SourceDao;
 import edu.cnm.deepdive.quotes.model.entity.Quote;
 import edu.cnm.deepdive.quotes.model.entity.Source;
 import io.reactivex.schedulers.Schedulers;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
 
 @Database(
     entities = {Source.class, Quote.class},
@@ -39,30 +47,29 @@ public abstract class QuotesDatabase extends RoomDatabase {
 
     private static final QuotesDatabase INSTANCE =
         Room.databaseBuilder(context, QuotesDatabase.class, DB_NAME)
-            .addCallback(new Callback() {
-              @Override
-              public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                super.onCreate(db);
-                QuotesDatabase database = QuotesDatabase.getInstance();
-                SourceDao sourceDao = database.getSourceDao();
-                Source source = new Source();
-                source.setName("Albert Einstein");
-                sourceDao.insert(source)
-                    .subscribeOn(Schedulers.io())
-                    .map((sourceId) -> {
-                      Quote quote = new Quote();
-                      quote.setSourceId(sourceId);
-                      quote.setText("I would teach peace rather than war. I would inculcate love rather than hate.");
-                      QuoteDao quoteDao = database.getQuoteDao();
-                      quoteDao.insert(quote)
-                          .subscribeOn(Schedulers.io())
-                          .subscribe();
-                      return sourceId;
-                    })
-                    .subscribe();
-              }
-            })
             .build();
+
+  }
+
+  private static class QuotesCallback extends Callback {
+
+    @Override
+    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+      super.onCreate(db);
+      // TODO Create a map from file contents
+      // TODO Persist map contents to database.
+    }
+
+    private Map<Source, List<Quote>> parseFile(int resourceId) throws IOException {
+      try (
+          InputStream input = QuotesDatabase.context.getResources().openRawResource(resourceId);
+          Reader reader = new InputStreamReader(input);
+          CSVParser parser = CSVParser.parse(
+              reader, CSVFormat.EXCEL.withIgnoreSurroundingSpaces().withIgnoreEmptyLines());
+      ) {
+        // TODO Add records from parser to map.
+      }
+    }
 
   }
 
