@@ -30,10 +30,10 @@
   </fragment>
 
   <fragment
-    android:id="@+id/navigation_dashboard"
-    android:label="@string/title_dashboard"
-    android:name="edu.cnm.deepdive.quotes.ui.dashboard.DashboardFragment"
-    tools:layout="@layout/fragment_dashboard"/>
+    android:id="@+id/navigation_quotes"
+    android:label="@string/title_quote_list"
+    android:name="edu.cnm.deepdive.quotes.controller.QuotesFragment"
+    tools:layout="@layout/fragment_quotes"/>
 
   <fragment
     android:id="@+id/navigation_notifications"
