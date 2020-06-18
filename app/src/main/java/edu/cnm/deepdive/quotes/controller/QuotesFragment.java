@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.quotes.R;
 import edu.cnm.deepdive.quotes.model.entity.Quote;
+import edu.cnm.deepdive.quotes.model.pojo.QuoteWithSource;
 import edu.cnm.deepdive.quotes.viewmodel.MainViewModel;
 
 public class QuotesFragment extends Fragment {
@@ -25,7 +26,7 @@ public class QuotesFragment extends Fragment {
     //noinspection ConstantConditions
     mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     mainViewModel.getQuotes().observe(getViewLifecycleOwner(), (quotes) -> {
-      ArrayAdapter<Quote> adapter =
+      ArrayAdapter<QuoteWithSource> adapter =
           new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, quotes);
       quoteList.setAdapter(adapter);
     });

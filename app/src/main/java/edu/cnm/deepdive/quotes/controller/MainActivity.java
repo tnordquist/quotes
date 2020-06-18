@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
       if (throwable != null) {
         Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show();
       }
-    });
+    }); 
   }
 
 }
