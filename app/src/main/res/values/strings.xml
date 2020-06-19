@@ -10,4 +10,8 @@
   <string name="title_notifications">Notifications</string>
 
   <string name="home_second">Home Second</string>
+
+  <string name="unattributed_source">(unknown)</string>
+  <string name="source_format">&#x2014;%s</string>
+
 </resources>

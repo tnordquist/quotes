@@ -8,4 +8,13 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="QuoteText" parent="AppTheme">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="SourceName" parent="AppTheme">
+    <item name="android:textStyle">italic</item>
+    <item name="android:textColor">@color/lightText</item>
+  </style>
+
 </resources>
