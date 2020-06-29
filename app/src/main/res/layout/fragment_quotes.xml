@@ -16,6 +16,8 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    android:orientation="vertical"/>
+    android:orientation="vertical"
+    android:background="#FFE0E0E0"
+    android:padding="@dimen/half_margin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,6 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
-import edu.cnm.deepdive.quotes.model.entity.Quote;
 import edu.cnm.deepdive.quotes.model.pojo.QuoteWithSource;
 import edu.cnm.deepdive.quotes.service.QuotesRepository;
 import io.reactivex.disposables.CompositeDisposable;
@@ -20,11 +19,13 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<List<QuoteWithSource>> quotes;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
+  private final MutableLiveData<QuoteWithSource> quote;
 
   public MainViewModel(@NonNull Application application) {
     super(application);
     repository = new QuotesRepository(application);
     quotes = new MutableLiveData<>();
+    quote = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();
     loadQuotes();
@@ -34,8 +35,22 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return quotes;
   }
 
+  public LiveData<QuoteWithSource> getQuote() {
+    return quote;
+  }
+
   public LiveData<Throwable> getThrowable() {
     return throwable;
+  }
+
+  public void setQuoteId(long id) {
+    pending.add(
+        repository.getQuote(id)
+            .subscribe(
+                (quote) -> this.quote.postValue(quote),
+                (throwable) -> this.throwable.postValue(throwable)
+            )
+    );
   }
 
   private void loadQuotes() {

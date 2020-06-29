@@ -14,4 +14,7 @@
   <string name="unattributed_source">(unknown)</string>
   <string name="source_format">&#x2014;%s</string>
 
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
