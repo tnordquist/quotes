@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import edu.cnm.deepdive.quotes.R;
 import edu.cnm.deepdive.quotes.model.pojo.QuoteWithSource;
 import edu.cnm.deepdive.quotes.view.QuoteAdapter;
@@ -19,6 +20,7 @@ public class QuotesFragment extends Fragment implements QuoteAdapter.OnClickList
 
   private MainViewModel mainViewModel;
   private RecyclerView quoteList;
+  private FloatingActionButton addQuote;
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class QuotesFragment extends Fragment implements QuoteAdapter.OnClickList
       ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_quotes, container, false);
     quoteList = root.findViewById(R.id.quote_list);
+    addQuote = root.findViewById(R.id.add_quote);
+    addQuote.setOnClickListener((v) -> editQuote(0));
     return root;
   }
 
