@@ -11,14 +11,14 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
-public class QuotesRepository {
+public class QuoteRepository {
 
   private final Context context;
   private final QuotesDatabase database;
   private final SourceDao sourceDao;
   private final QuoteDao quoteDao;
 
-  public QuotesRepository(Context context) {
+  public QuoteRepository(Context context) {
     this.context = context;
     database = QuotesDatabase.getInstance();
     sourceDao = database.getSourceDao();
