@@ -5,9 +5,10 @@
   <string name="hello_home_second">Hello HomeSecondFragment. Arg: %1$s</string>
   <string name="hello_dashboard_second">Hello HomeSecondFragment. Arg: %1$s</string>
   <string name="hello_notifications_second">Hello HomeSecondFragment. Arg: %1$s</string>
+
   <string name="title_home">Home</string>
-  <string name="title_quote_list">Quotes</string>
-  <string name="title_notifications">Notifications</string>
+  <string name="title_quotes">Quotes</string>
+  <string name="title_sources">Sources</string>
 
   <string name="home_second">Home Second</string>
 
