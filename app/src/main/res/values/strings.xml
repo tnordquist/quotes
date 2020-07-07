@@ -19,5 +19,7 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="source_hint">Source of quote</string>
   <string name="quote_hint">Text of quote</string>
+  <string name="login_failure">Unable to sign in with the provided credentials.</string>
+  <string name="sign_out">Sign out</string>
 
 </resources>
