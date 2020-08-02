@@ -8,36 +8,19 @@
   <fragment
     android:id="@+id/navigation_home"
     android:label="@string/title_home"
-    android:name="edu.cnm.deepdive.quotes.ui.home.HomeFragment"
-    tools:layout="@layout/fragment_home">
-
-    <action
-      android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-      app:destination="@id/navigation_home_second"/>
-  </fragment>
-  <fragment
-    android:id="@+id/navigation_home_second"
-    android:label="@string/home_second"
-    android:name="edu.cnm.deepdive.quotes.ui.home.HomeSecondFragment"
-    tools:layout="@layout/fragment_home_second">
-    <action
-      android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-      app:destination="@id/navigation_home"/>
-
-    <argument
-      android:name="myArg"
-      app:argType="string"/>
-  </fragment>
+    android:name="edu.cnm.deepdive.quotes.controller.HomeFragment"
+    tools:layout="@layout/fragment_home"/>
 
   <fragment
     android:id="@+id/navigation_quotes"
-    android:label="@string/title_quote_list"
+    android:label="@string/title_quotes"
     android:name="edu.cnm.deepdive.quotes.controller.QuotesFragment"
     tools:layout="@layout/fragment_quotes"/>
 
   <fragment
-    android:id="@+id/navigation_notifications"
-    android:label="@string/title_notifications"
-    android:name="edu.cnm.deepdive.quotes.ui.notifications.NotificationsFragment"
-    tools:layout="@layout/fragment_notifications"/>
+    android:id="@+id/navigation_sources"
+    android:label="@string/title_sources"
+    android:name="edu.cnm.deepdive.quotes.controller.SourcesFragment"
+    tools:layout="@layout/fragment_sources"/>
+
 </navigation>
